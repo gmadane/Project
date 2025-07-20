@@ -1,9 +1,9 @@
-name: Run TestNG Automation (Scheduled)
+name: Run Maven TestNG Automation (Scheduled)
 
 on:
   schedule:
-    - cron: '*/3 * * * *'
-  workflow_dispatch:
+    - cron: '*/3 * * * *'     # Runs every 3 minutes
+  workflow_dispatch:          # Allows manual trigger
 
 jobs:
   run-tests:
@@ -17,10 +17,9 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '23'
-          distribution: 'temurin' # Eclipse Temurin (OpenJDK)
+          distribution: 'temurin'
 
-      - name: Verify Java version
-        run: java -version
-
-      - name: Run Maven TestNG Tests
-        run: mvn clean test
+      - name: Run Maven Tests
+        run: |
+          cd Project
+          mvn clean test
