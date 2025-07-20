@@ -2,7 +2,7 @@ name: Run TestNG Automation (Scheduled)
 
 on:
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '*/3 * * * *'
   workflow_dispatch:
 
 jobs:
