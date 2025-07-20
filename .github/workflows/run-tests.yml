@@ -10,14 +10,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up JDK
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
+      - name: Set up JDK 23
+        uses: actions/setup-java@v3
+        with:
+          java-version: '23'
+          distribution: 'temurin' # Eclipse Temurin (OpenJDK)
 
-    - name: Run Maven Tests
-      run: mvn clean test
+      - name: Verify Java version
+        run: java -version
+
+      - name: Run Maven TestNG Tests
+        run: mvn clean tes
