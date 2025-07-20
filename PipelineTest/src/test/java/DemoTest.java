@@ -7,7 +7,9 @@ public class DemoTest {
     @Test
     public void openGoogle() {
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--user-data-dir=/tmp/unique-profile-" + System.currentTimeMillis());
+        WebDriver driver = new ChromeDriver(options);   
         driver.get("https://www.google.com");
         //driver.quit();
     }
